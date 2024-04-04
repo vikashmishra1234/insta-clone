@@ -82,7 +82,7 @@
 @media screen and (max-width: 600px) {
     .sidebar nav ul {
         flex-direction: row;
-        height: fit-content;
+        height: 94px;
         background-color: black;
         font-size: 12px;
        
@@ -100,7 +100,7 @@
         border: none;
         top: 83%;
         
-      
+      padding: 0;
        height: 30px !important;
         z-index: 4000;
       

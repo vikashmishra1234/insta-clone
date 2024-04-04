@@ -55,7 +55,7 @@ const Post = (props) => {
             style={{ width: "55px", borderRadius: "50%" }}
           />:
           <img
-            src={`https://insta-clone-knbn.onrender.com/images/${props.Profile}`}
+            src={`http://localhost:2000/images/${props.Profile}`}
             onError={handleError}
             alt={'img'}
             height={"50px"}
@@ -68,7 +68,7 @@ const Post = (props) => {
       </section>
       <section className="post-image">
         <img
-          src={`https://insta-clone-knbn.onrender.com/images/${props.image}`}
+          src={`http://localhost:2000/images/${props.image}`}
           alt={props.image}
           height={"400px"}
           width={"400px"}
