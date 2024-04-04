@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 // const url = 'http://localhost:2000';
-const url = 'https://insta-clone-2tsp.onrender.com';
+const url = 'https://insta-clone-knbn.onrender.com';
 
 
 
