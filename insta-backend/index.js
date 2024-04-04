@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 
 const app = express();
 
-const Port = 5000;
+const Port = 2000;
 
 app.use(cors());
 app.use(express.json())
