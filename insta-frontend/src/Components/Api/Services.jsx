@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const url = 'https://instagram-backend-1-7vxw.onrender.com';
+const url = 'https://insta-clone-2tsp.onrender.com';
 
 
 
