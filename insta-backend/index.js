@@ -8,7 +8,11 @@ const app = express();
 
 const Port = 2000;
 
-app.use(cors());
+app.use(cors({
+    origin:["https://insta-clone-frontend-sooty.vercel.app"],
+    methods:["POST","GET","PUT"],
+    credentials:true
+}));
 app.use(express.json())
 app.use('/api',routes);
 app.use(cookieParser())
