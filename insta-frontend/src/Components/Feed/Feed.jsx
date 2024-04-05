@@ -4,7 +4,7 @@ import Post from './Post'
 
 
 const Feed = ({Posts}) => {
-
+console.log(Posts)
   return (
     <div>
       {

@@ -2,9 +2,10 @@ import React from 'react'
 import Sidebar from '../sidebar/Sidebar';
 import '../../Style/post.css';
 import { updateProfile } from '../Api/Services';
+import {useNavigate} from 'react-router-dom'
 
 const UpdateProfile = () => {
-
+const Navigate = useNavigate()
     const handleSubmit=async(e)=>{
         e.preventDefault();
         let form = e.target
@@ -13,6 +14,7 @@ const UpdateProfile = () => {
         let res=await updateProfile(formObj,localStorage.getItem("profileId"));
         if(res.message){
             alert(res.message);
+            Navigate(`/profile?user=${localStorage.getItem("userId")}`);
         }
     }
   return (

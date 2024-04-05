@@ -51,6 +51,7 @@ exports.updatePostn=async(req,res)=>{
 exports.getAllPosts=async(req,res)=>{
 try {
     const posts =await userPosts.find({userId:req.params.userId});
+   
     if(!posts){
             return res.status(400).json({success:false,error:'no post found'});
     }

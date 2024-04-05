@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 const UploadPost = ({setForm}) => {
     const [image,setImage]=useState();
     const[post,setPost] = useState()
-    const {setRecent,user,recentPost} = useContext(ContextProvider);
+    const {setRecent,user,setChanges,changes,recentPost} = useContext(ContextProvider);
     const Navigate = useNavigate();
     
     const uploadImage = async(e)=>{
@@ -27,10 +27,13 @@ const UploadPost = ({setForm}) => {
         formData.append("Profile","mishra")
         
         let res=await ImgeUpload(formData);
+        setChanges(!changes)
         Navigate('/home');
+        
         if(res.message){
             alert(res.message);
             await updatePost(localStorage.getItem("profileId"));
+            setChanges(!changes)
             
         }
         setRecent([...recentPost,...res.recent]);

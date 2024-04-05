@@ -28,7 +28,7 @@ const Bio = (props) => {
             <label htmlFor="dp">
               
               {
-                show?<img src={user} alt="img" />:<img src={`https://insta-clone-knbn.onrender.com/userProfiles/${props.image}`} onError={()=>setShow(true)} alt="img" />
+                show?<img src={user} alt="img" />:<img src={`src/userProfiles/${props.image}`} onError={()=>setShow(true)} alt="img" />
               }
 
             </label>

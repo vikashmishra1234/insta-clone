@@ -16,6 +16,7 @@ exports.addPosts = async (req, res) => {
     let newPost = await Post.create({
       Likes: req.body.Likes,
       userId: req.body.userId,
+
       Username: req.body.Username,
       Profile: req.body.Profile,
       caption: req.body.caption,
@@ -114,7 +115,7 @@ exports.findAllPosts = async (req, res) => {
    
     for (const userId of Following) {
      let documents = await userPosts.find({ profileId: userId });
-      
+   
       documentsByUser.push(documents)
     }
     
@@ -126,23 +127,38 @@ exports.findAllPosts = async (req, res) => {
     const Follow = await follower.find({ adminId: req.params.userId });
 
    
-    if (Follow.length == 0) {
-      console.log("following empty");
-      return res.json({
-        success: false,
-        error: "this user do not follow any one",
-      });
-    }
+    // if (Follow.length == 0) {
+    //   console.log("following empty");
+    //   return res.json({
+    //     success: false,
+    //     error: "this user do not follow any one",
+    //   });
+    //}
     await Follow.map((following) => Following.push(following.profileId));
+   
     if (Following.length == 0) {
       console.log("Following empty");
     } else {
         
       let newpos = await getPosts(Following);
     let pos= newpos.flat()
+    //recent
+    //req.params.userId
+    const id = req.params.userId;
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); 
+    const posts=await userPosts.find({userId:id,createdAt: { $gte: today } });
+    if(!posts){
+         res.status(200).json({success:true,error:"recent posts available"});
+    }
+    const allPosts = [...pos,posts];
+    console.log(allPosts.flat())
+    
+
+    //return res.status(200).json({success:true,posts:posts});
       return res
         .status(200)
-        .json({ POST: pos, success: true, message: "post found successfully" });
+        .json({ POST: allPosts.flat(), success: true, message: "post found successfully" });
     }
   } catch (error) {
     console.log(error.message);

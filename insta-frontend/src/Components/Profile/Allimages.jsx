@@ -3,7 +3,7 @@ import React from 'react'
 const Allimages = ({image}) => {
   return (
     <section>
-        <img height={'250px'} width={'200px'} src={`https://insta-clone-knbn.onrender.com/images/${image}`} alt="" />
+        <img height={'250px'} width={'200px'} src={`src/images/${image}`} alt="" />
     </section>
   )
 }

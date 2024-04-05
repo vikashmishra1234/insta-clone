@@ -61,6 +61,7 @@ const Profile = ({ admin }) => {
     };
     getProfileData();
   }, [profile, change]);
+
   const handleClick = async () => {
     console.log(admin);
     console.log("add");
@@ -71,6 +72,8 @@ const Profile = ({ admin }) => {
     await addFollower(data);
     setChange(!change);
   };
+
+  
   const Removefollower = async () => {
     const data = {
       userId: admin._id,

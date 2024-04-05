@@ -6,7 +6,7 @@ import ContextProvider from './Context/ContextProvider'
 import '../Style/feed.css'
 
 const Home = () => {
-  const {setUser,user} = useContext(ContextProvider);
+  const {setUser,changes,user} = useContext(ContextProvider);
   const [Posts,setPosts] = useState(null);
   const [allPosts,setAllPost] = useState(null);
   const [userPost,setUserPost] = useState(null)
@@ -15,14 +15,14 @@ const Home = () => {
         if(user!=null){
           
           let posts= await getposts(user._id)
-      
+      console.log("all posts",posts)
           setAllPost(posts)    
             
         }
         
       }
       user&&getPosts();
-  },[user])
+  },[user,changes])
   useEffect(()=>{
     const profileCreate=async()=>{
       
@@ -37,19 +37,12 @@ const Home = () => {
     }    
    let pro=  await createProfile(data);
    
-   console.log(pro)
+   
      
     }
    user&&profileCreate();
   },[user]);
-  useEffect(()=>{
-      const recent=async()=>{
-      let post = await getRecent(localStorage.getItem("userId"));
-     
-      setPosts(post.posts)
-      }
-      recent();
-  },[])
+ 
 
   useEffect(()=>{
     const getUser = async()=>{
@@ -59,25 +52,26 @@ const Home = () => {
     getUser()
    
   },[])
-  useEffect(()=>{
-    if(Posts&&allPosts){
+  // useEffect(()=>{
+  //   if(allPosts){
      
-      let posts = [...Posts,...allPosts.POST]
-      let uniqueArray = Object.values(posts.reduce((acc, cur) => {
-        acc[cur._id] = cur;
-        return acc;
-      }, {}));
-      console.log(uniqueArray)
-      setUserPost(uniqueArray)
+  //     let posts = [...Posts,...allPosts.POST]
+  //     //remove duplicates
+  //     // let uniqueArray = Object.values(posts.reduce((acc, cur) => {
+  //     //   acc[cur._id] = cur;
+  //     //   return acc;
+  //     // }, {}));
+  //     console.log(uniqueArray)
+  //     setUserPost(uniqueArray)
       
-    }
-  },[allPosts,Posts])
+  //   }
+  // },[allPosts,Posts])
   return (
     <div  style={{display:'flex'}}>
      <Sidebar />
      <div className='feed-container'>
 
-     <Feed Posts={userPost}/>
+     {allPosts&&<Feed Posts={allPosts.POST}/>}
      </div>
     </div>
   )
