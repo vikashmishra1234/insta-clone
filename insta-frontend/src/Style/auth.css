@@ -82,11 +82,24 @@
 @media screen and (max-width: 600px) {
     .sidebar nav ul {
         flex-direction: row;
-        height: 94px;
-        background-color: black;
-        font-size: 12px;
+    height: 94px;
+    justify-content: center;
+    background-color: black;
+    font-size: 10px;
+    gap: 10px;
        
 
+    }
+    .container{
+       
+        left: 2%;
+       
+        width: 86vw;
+       
+    }
+    #profile{
+        width: 31px;
+        padding: 7px;
     }
     .sidebar nav ul li a{
         color: white;

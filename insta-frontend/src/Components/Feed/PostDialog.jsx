@@ -17,7 +17,7 @@ const PostDialog = ({ postId, image ,setShow}) => {
     <main className="post-dialog">
       <div className="dialog-content">
         <section className="dialog-image">
-          <img src={`/src/images/${image}`} alt={`${image}`} />
+          <img src={`https://insta-clone-knbn.onrender.com/images/${image}`} alt={`${image}`} />
         </section>
         <section className="dialog-comments">
           {

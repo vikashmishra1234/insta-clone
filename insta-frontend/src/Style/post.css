@@ -125,7 +125,7 @@ font-size: 20px;
 }
 @media screen and (max-width:401px){
     .wrapper{
-        width: 92%;
+        width: 92vw;
         margin-left: 13px
     }
     .post-image img{
@@ -153,7 +153,7 @@ font-size: 20px;
         position: absolute;
         top: 26%;
         left: 9%;
-      
+      font-size: 16px;
         
         display: flex;
         gap: 20px;

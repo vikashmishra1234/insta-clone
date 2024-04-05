@@ -19,24 +19,25 @@ const Bio = (props) => {
     alert(resp.message);
     setProfile(!profile);
   };
- console.log(show)
+ 
   return (
     <div>
       {
         <div className="profile">
           <div className="icon">
-            <label htmlFor="profile">
+            <label htmlFor="dp">
+              
               {
-                show?<img src={user} alt="img" />:<img src={`src/userProfiles/${props.image}`} onError={()=>setShow(true)} alt="img" />
+                show?<img src={user} alt="img" />:<img src={`https://insta-clone-knbn.onrender.com/userProfiles/${props.image}`} onError={()=>setShow(true)} alt="img" />
               }
 
             </label>
 
          {props.userId==localStorage.getItem("userId")&&<input
               onChange={handleChange}
-              style={{ display: "none" }}
+              style={{ display:'none' }}
               type="file"
-              id="profile"
+              id="dp"
             />}
           </div>
           <div className="about">

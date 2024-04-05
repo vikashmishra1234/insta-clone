@@ -13,7 +13,7 @@ const Login = () => {
         let formData = new FormData(form)
         let formObj = Object.fromEntries(formData.entries());
        let data= await HandleForm(login,formObj);
-       console.log(data)
+       
        localStorage.setItem("token",data.token);
        localStorage.setItem("userId",data.user._id)
        alert(data.message);

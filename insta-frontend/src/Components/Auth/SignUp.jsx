@@ -14,9 +14,12 @@ const SignUp = () => {
         let formObj = Object.fromEntries(formData.entries());
        let data= await HandleForm(signUp,formObj);
       if(data.success){
-        alert(data.message);
-        localStorage.setItem("token",data.token);
-        Navigate('/home');
+          
+       localStorage.setItem("token",data.token);
+       localStorage.setItem("userId",data.user._id)
+       alert(data.message);
+       Navigate('/home');
+     
       }
       else{
         alert(data.error)
