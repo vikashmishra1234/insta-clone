@@ -20,6 +20,8 @@ const PostDialog = ({ postId, image ,setShow}) => {
           <img src={`/src/images/${image}`} alt={`${image}`} />
         </section>
         <section className="dialog-comments">
+
+      <h3 className="heading" style={{textAlign:'center'}}>comments</h3>
           {
             
            allComment&&allComment.map((comment, index) => (

@@ -14,7 +14,7 @@ import Allimages from "./Allimages";
 import "../../Style/feed.css";
 
 const Profile = ({ admin }) => {
-  const { profile, setUser } = useContext(ContextProvider);
+  const { profile, setUser,changes } = useContext(ContextProvider);
   const [Profile, setProfile] = useState(null);
   const [allPosts, setAllPosts] = useState(null);
   const [notUser, setNotUser] = useState(false);
@@ -60,11 +60,10 @@ const Profile = ({ admin }) => {
       localStorage.setItem("profileId", res.Profile._id);
     };
     getProfileData();
-  }, [profile, change]);
+  }, [profile, changes]);
 
   const handleClick = async () => {
-    console.log(admin);
-    console.log("add");
+  
     const data = {
       userId: admin._id,
       profileId: Profile._id,
@@ -73,7 +72,7 @@ const Profile = ({ admin }) => {
     setChange(!change);
   };
 
-  
+
   const Removefollower = async () => {
     const data = {
       userId: admin._id,

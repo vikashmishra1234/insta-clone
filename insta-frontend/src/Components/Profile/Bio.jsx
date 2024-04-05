@@ -6,7 +6,7 @@ import ContextProvider from "../Context/ContextProvider";
 import user from '../../assets/user.png'
 
 const Bio = (props) => {
-  const { setProfile, profile } = useContext(ContextProvider);
+  const { setProfile,setChanges,changes, profile } = useContext(ContextProvider);
   const [show,setShow] = useState(false)
 
   const Navigate = useNavigate();
@@ -17,9 +17,10 @@ const Bio = (props) => {
     formData.append("userId", localStorage.getItem("userId"));
     let resp = await uploadProfile(formData);
     alert(resp.message);
+    setChanges(!changes);
     setProfile(!profile);
   };
- 
+ console.log(props.image)
   return (
     <div>
       {
@@ -28,7 +29,7 @@ const Bio = (props) => {
             <label htmlFor="dp">
               
               {
-                show?<img src={user} alt="img" />:<img src={`src/userProfiles/${props.image}`} onError={()=>setShow(true)} alt="img" />
+                show?<img src={user} alt="img" />:<img src={`https://insta-clone-knbn.onrender.com/userProfiles/${props.image}`} onError={()=>setShow(true)} alt="img" />
               }
 
             </label>

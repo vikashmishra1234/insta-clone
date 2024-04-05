@@ -7,36 +7,32 @@ import "../../Style/post.css";
 import { updatePosts } from "../Api/Services";
 import AddComent from "./AddComent";
 import PostDialog from "./PostDialog";
-import user from '../../assets/user.png'
+import user from "../../assets/user.png";
 
 const Post = (props) => {
   const [likes, setLikes] = useState(0);
   const [show, setShow] = useState(false);
   const [error, setError] = useState(false);
   let intlike = parseInt(props.Likes);
-  
+
   const updateLikes = async () => {
     const data = {
       Likes: 1 + intlike,
     };
-   setLikes(likes+1);
+    setLikes(likes + 1);
     const res = await updatePosts(data, props.id);
-
-  
-   
   };
   const showDialog = async () => {
     setShow(!show);
   };
-  const handleError = ()=>{
-    setError(true)
-  }
-
+  const handleError = () => {
+    setError(true);
+  };
   return (
     <main className="wrapper">
       <section>
         <div
-        className="post-wrapper"
+          className="post-wrapper"
           style={{
             display: "flex",
             fontSize: "20px",
@@ -46,29 +42,29 @@ const Post = (props) => {
             alignItems: "center",
           }}
         >
-
-         { error?<img
-            src={user}
-           
-            alt={'img'}
-            height={"50px"}
-            style={{ width: "55px", borderRadius: "50%" }}
-          />:
-          <img
-            src={`http://localhost:2000/userProfiles/${props.Profile}`}
-            onError={handleError}
-            alt={'img'}
-            height={"50px"}
-            style={{ width: "55px", borderRadius: "50%" }}
-          />}
-
+          {error ? (
+            <img
+              src={user}
+              alt={"img"}
+              height={"50px"}
+              style={{ width: "55px", borderRadius: "50%" }}
+            />
+          ) : (
+            <img
+              src={`https://insta-clone-knbn.onrender.com/profiles/${props.Profile}`}
+              onError={handleError}
+              alt={"img"}
+              height={"50px"}
+              style={{ width: "55px", borderRadius: "50%" }}
+            />
+          )}
           {props.Username} <br />
           {props.location}
         </div>
       </section>
       <section className="post-image">
         <img
-          src={`http://localhost:2000/images/${props.image}`}
+          src={`https://insta-clone-knbn.onrender.com/images/${props.image}`}
           alt={props.image}
           height={"400px"}
           width={"400px"}
@@ -83,7 +79,7 @@ const Post = (props) => {
             <CiSaveDown2 size={30} />
           </div>
         </div>
-        <small style={{ fontSize: "15px" }}>Likes: {intlike+likes}</small>
+        <small style={{ fontSize: "15px" }}>Likes: {intlike + likes}</small>
         <section className="lower">
           <div style={{ fontSize: "17px" }}>
             {props.Username}-: {props.caption}
@@ -104,23 +100,3 @@ const Post = (props) => {
 };
 
 export default Post;
-// useEffect(()=>{
-//   const importImages=async()=>{
-//     const imageImports = import.meta.glob('../../images/*');
-//     const importedImages = await Promise.all(
-//       recentPost.map(async (post) => {
-//         const imagePath = `../../images/${post.image}`;
-//         if (imageImports[imagePath]) {
-//           const { default: image } = await imageImports[imagePath]();
-//           return image;
-//         } else {
-//           console.warn(`Image not found: ${imagePath}`);
-//           return null;
-//         }
-//       })
-//     );
-//     setImages(importedImages.filter(image => image !== null));
-//     console.log(images)
-//   }
-//   importImages()
-// },[recentPost])

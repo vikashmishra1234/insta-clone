@@ -13,10 +13,10 @@ const btn1={
 }
 
 const AddComent = ({id}) => {
-    const [comment,setComment] = useState(null);
+    const [comment,setComment] = useState('');
     const{user}= useContext(ContextProvider);
     const updateComments = async()=>{
-        if(comment){
+        if(comment.length>0){
             console.log(user)
           const  data={
                 postId:id,
@@ -25,13 +25,14 @@ const AddComent = ({id}) => {
                 Profile:user.Profile
             }
            let res= await addComments(data);
+           setComment('');
            alert(res.message);
            
         }
     }
   return (
    <section style={{paddingTop:'3px',paddingBottom:'3px'}}>
-    <input style={{border:'none',outline:'none'}} type="text" placeholder='add comment' onChange={(e)=>setComment(e.target.value)} />
+    <input value={comment} style={{border:'none',outline:'none'}} type="text" placeholder='add comment' onChange={(e)=>setComment(e.target.value)} />
     <button className='btn-2' onClick={updateComments} style={btn1} >add</button>
    </section>
   )

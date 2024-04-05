@@ -17,6 +17,7 @@ app.use(cors());
 // }));
 app.use(express.json())
 app.use('/images', express.static(path.join(__dirname, '../insta-frontend/src/images')));
+app.use('/profiles', express.static(path.join(__dirname, '../insta-frontend/src/userProfiles')));
 app.use('/api',routes);
 app.use(cookieParser())
 
