@@ -70,8 +70,8 @@ const Home = () => {
     <div  style={{display:'flex'}}>
      <Sidebar />
      <div className='feed-container'>
-
-     {allPosts?<Feed Posts={allPosts.POST}/>:<h2>click on the create button upload images</h2>}
+{allPosts&&allPosts.POST.length>0?<Feed Posts={allPosts.POST}/>:<h2>click on the create button upload images</h2>}
+     {/* {allPosts?<Feed Posts={allPosts.POST}/>:<h2>click on the create button upload images</h2>} */}
      </div>
     </div>
   )

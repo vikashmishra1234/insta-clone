@@ -12,7 +12,13 @@ const Login = () => {
         let form = e.target
         let formData = new FormData(form)
         let formObj = Object.fromEntries(formData.entries());
-       let data= await HandleForm(login,formObj);
+        let formObject={}
+        for (const key in formObj) {
+          if (Object.hasOwnProperty.call(formObj, key)) {
+            formObject[key] = formObj[key].toLowerCase();
+          }
+        }
+       let data= await HandleForm(login,formObject);
        
        localStorage.setItem("token",data.token);
        localStorage.setItem("userId",data.user._id)

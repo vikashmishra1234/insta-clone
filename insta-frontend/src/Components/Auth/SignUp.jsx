@@ -12,7 +12,14 @@ const SignUp = () => {
         let form = e.target
         let formData = new FormData(form)
         let formObj = Object.fromEntries(formData.entries());
-       let data= await HandleForm(signUp,formObj);
+        let formObject={}
+        for (const key in formObj) {
+          if (Object.hasOwnProperty.call(formObj, key)) {
+            formObject[key] = formObj[key].toLowerCase();
+          }
+        }
+        
+       let data= await HandleForm(signUp,formObject);
       if(data.success){
           
        localStorage.setItem("token",data.token);
@@ -34,30 +41,35 @@ const SignUp = () => {
       <main>
         <form action="" className="frm" onSubmit={handleSubmit}>
           <input
+          required
             autoComplete="off"
             placeholder="enter email"
             name="Email"
             type="email"
           />
           <input
+          required
             autoComplete="off"
             placeholder="enter name"
             name="Name"
             type="text"
           />
           <input
+          required
             autoComplete="off"
             placeholder="enter username"
             name="Username"
             type="user-name"
           />
           <input
+          required
             autoComplete="off"
             placeholder="password"
             name="Password"
             type="password"
           />
           <input
+          required
             autoComplete="off"
             placeholder="confirm password"
             name="ConfirmPass"
