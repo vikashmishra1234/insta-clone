@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+
 
  //const url = 'http://localhost:2000';
 const url = 'https://insta-clone-knbn.onrender.com';
-
+var load = false;
 
 
 export const signUp=async(data)=>{
@@ -17,8 +17,11 @@ export const signUp=async(data)=>{
     }
 }
 export const login=async(data)=>{
+  
     try {
+        load = true
         const fetch = await axios.post(`${url}/api/login`,data);
+        load=false
         if(fetch.data.success){
             return fetch.data
         }

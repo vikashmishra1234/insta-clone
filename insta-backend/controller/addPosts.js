@@ -136,7 +136,7 @@ exports.findAllPosts = async (req, res) => {
     //}
     await Follow.map((following) => Following.push(following.profileId));
    
-    if (Following.length == 0) {
+    if (false) {
       console.log("Following empty");
     } else {
         
