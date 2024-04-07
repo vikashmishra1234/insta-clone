@@ -115,7 +115,7 @@ exports.findAllPosts = async (req, res) => {
    
     for (const userId of Following) {
      let documents = await userPosts.find({ profileId: userId });
-   
+
       documentsByUser.push(documents)
     }
     
@@ -135,7 +135,7 @@ exports.findAllPosts = async (req, res) => {
     //   });
     //}
     await Follow.map((following) => Following.push(following.profileId));
-   
+
     if (false) {
       console.log("Following empty");
     } else {
@@ -152,7 +152,7 @@ exports.findAllPosts = async (req, res) => {
          res.status(200).json({success:true,error:"recent posts available"});
     }
     const allPosts = [...pos,posts];
-    console.log(allPosts.flat())
+    
     
 
     //return res.status(200).json({success:true,posts:posts});

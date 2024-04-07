@@ -29,7 +29,7 @@ const Login = () => {
   return (
     <div className="container">
       <header>
-        <img src={insta} alt="insta image" />
+        {/* <img src={insta} alt="insta image" /> */}
         <p>Sign up to see photos and videos from your friends.</p>
       </header>
       <main>

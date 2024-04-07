@@ -52,20 +52,9 @@ const Home = () => {
     getUser()
    
   },[])
-  // useEffect(()=>{
-  //   if(allPosts){
+ 
      
-  //     let posts = [...Posts,...allPosts.POST]
-  //     //remove duplicates
-  //     // let uniqueArray = Object.values(posts.reduce((acc, cur) => {
-  //     //   acc[cur._id] = cur;
-  //     //   return acc;
-  //     // }, {}));
-  //     console.log(uniqueArray)
-  //     setUserPost(uniqueArray)
-      
-  //   }
-  // },[allPosts,Posts])
+  
   return (
     <div  style={{display:'flex'}}>
      <Sidebar />

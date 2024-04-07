@@ -14,7 +14,7 @@ import Allimages from "./Allimages";
 import "../../Style/feed.css";
 
 const Profile = ({ admin }) => {
-  const { profile, setUser,changes } = useContext(ContextProvider);
+  const { profile, setUser,changes,setChanges } = useContext(ContextProvider);
   const [Profile, setProfile] = useState(null);
   const [allPosts, setAllPosts] = useState(null);
   const [notUser, setNotUser] = useState(false);
@@ -40,7 +40,7 @@ const Profile = ({ admin }) => {
     };
 
     Profile && checkFollow();
-  }, [Profile, change]);
+  }, [Profile, changes]);
   useEffect(() => {
     const allPosts = async () => {
       let res = await getAllPost(receivedData);
@@ -55,6 +55,7 @@ const Profile = ({ admin }) => {
   useEffect(() => {
     const getProfileData = async () => {
       let res = await getProfile(receivedData);
+      
       setProfile(res.Profile);
     
       localStorage.setItem("profileId", res.Profile._id);
@@ -63,24 +64,29 @@ const Profile = ({ admin }) => {
   }, [profile, changes]);
 
   const handleClick = async () => {
-  
+  if(admin._id){
+
     const data = {
       userId: admin._id,
       profileId: Profile._id,
     };
     await addFollower(data);
-    setChange(!change);
+    setChanges(!changes);
+  }
   };
 
 
   const Removefollower = async () => {
-    const data = {
-      userId: admin._id,
-      profileId: Profile._id,
-    };
-    console.log("remove");
-    follow && (await removeFollow(data));
-    setChange(!change);
+    if(admin._id){
+
+      const data = {
+        userId: admin._id,
+        profileId: Profile._id,
+      };
+      console.log("remove");
+      follow && (await removeFollow(data));
+      setChanges(!changes);
+    }
   };
 
   return (
@@ -90,6 +96,7 @@ const Profile = ({ admin }) => {
         <div>
           {Profile && (
             <Bio
+            setChanges={setChanges}
               profileId={Profile._id}
               Username={Profile.userName}
               posts={Profile.posts}

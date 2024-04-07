@@ -6,7 +6,7 @@ import ContextProvider from "../Context/ContextProvider";
 import user from '../../assets/user.png'
 
 const Bio = (props) => {
-  const { setProfile,setChanges,changes, profile } = useContext(ContextProvider);
+  const { setProfile,changes, profile } = useContext(ContextProvider);
   const [show,setShow] = useState(false)
 
   const Navigate = useNavigate();
@@ -17,7 +17,7 @@ const Bio = (props) => {
     formData.append("userId", localStorage.getItem("userId"));
     let resp = await uploadProfile(formData);
     alert(resp.message);
-    setChanges(!changes);
+    props.setChanges(!changes);
     setProfile(!profile);
   };
  console.log(props.image)
