@@ -4,6 +4,18 @@
         {
             "src":"/login",
             "dest":"/"
-        }
+        },
+        {
+            "src":"/home",
+            "dest":"/"
+        },
+        {
+            "src":"/search",
+            "dest":"/"
+        },
+        {
+            "src":"/profile",
+            "dest":"/"
+        },
     ]
 }
