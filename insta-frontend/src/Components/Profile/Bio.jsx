@@ -10,6 +10,9 @@ const Bio = (props) => {
   const [show,setShow] = useState(false)
 
   const Navigate = useNavigate();
+  const handleFollowing = ()=>{
+    Navigate(`/following`)
+  }
   const handleChange = async (e) => {
     const formData = new FormData();
     formData.append("file", e.target.files[0]);
@@ -20,7 +23,7 @@ const Bio = (props) => {
     props.setChanges(!changes);
     setProfile(!profile);
   };
- console.log(props.image)
+
   return (
     <div>
       {
@@ -62,15 +65,15 @@ props.userId==localStorage.getItem("userId")&&
                 {props.posts} posts{" "}
               </small>
               <small style={{ marginLeft: "10px" }}>
-                {props.follower} follower
+                {props.follower} <span onClick={''}>follower</span>
               </small>
               <small style={{ marginLeft: "10px" }}>
-                {props.following} following
+                {props.following} <span onClick={handleFollowing}>following</span>
               </small>
             </section>
             <section>
               <div>
-                <p>{props.bio}</p>
+               {props.bio.length===0?<p>No bio added</p>:<p>{props.bio}</p>} 
               </div>
          
             </section>

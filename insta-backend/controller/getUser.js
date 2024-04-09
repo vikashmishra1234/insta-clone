@@ -50,7 +50,7 @@ exports.updatePostn=async(req,res)=>{
 }
 exports.getAllPosts=async(req,res)=>{
 try {
-    const posts =await userPosts.find({userId:req.params.userId});
+    const posts =await userPosts.find({profileId:req.params.userId});
    
     if(!posts){
             return res.status(400).json({success:false,error:'no post found'});
@@ -64,7 +64,7 @@ try {
 exports.getUsers=async(req,res)=>{
     try { 
         let keyword = req.query.user;
-        const users = await signUp.find({ Username: { $regex: keyword, $options: 'i' } });
+        const users = await userProfile.find({ userName: { $regex: keyword, $options: 'i' } });
        if(!users){
         return res.status(404).json({success:false,error:"No user found with this name"});
        }

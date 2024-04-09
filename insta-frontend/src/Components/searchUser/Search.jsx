@@ -18,8 +18,9 @@ const Search = () => {
    
     const handleSearch = async()=>{
         if(user){
-            alert(user);
+           
           let Users= await searchUser(user);
+        
           setUsers(Users.users);
           if(Users.users.length<=0){
             setShowMessage(true)
@@ -35,7 +36,7 @@ const Search = () => {
     }
   return (
     <>
-   <div style={{display:'flex'}} >
+   <div className='home-wrapper' >
     <Sidebar/>
     <main className='search-main'>
         <section>
@@ -49,11 +50,11 @@ const Search = () => {
             <User 
            
             handleClick={handleClick}
-            user_id={item._id}
+            profileId={item._id}
              key = {index}
-             Username={item.Username}
-             Name={item.Name}
-             profile={item.Profile}
+             Username={item.userName}
+            
+             profile={item.profileImage}
             />
           ))
         }

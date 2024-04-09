@@ -135,7 +135,7 @@ exports.findAllPosts = async (req, res) => {
     //   });
     //}
     await Follow.map((following) => Following.push(following.profileId));
-
+   console.log(Following)
     if (false) {
       console.log("Following empty");
     } else {
@@ -164,3 +164,33 @@ exports.findAllPosts = async (req, res) => {
     console.log(error.message);
   }
 };
+
+
+exports.getFollower = async(req,res)=>{
+  const Following = [];
+  const allFollowing = [];
+  try {
+    const userId = req.params.userId;
+    const following = await follower.find({ adminId: userId });
+   
+    // Use map instead of forEach to return an array of Promises
+    const profilePromises = following.map(async (element) => {
+        Following.push(element.profileId);
+        const profile = await userProfile.findById(element.profileId);
+        return profile;
+    });
+    
+    // Wait for all the asynchronous operations to complete
+    const profiles = await Promise.all(profilePromises);
+    
+    allFollowing.push(...profiles);
+   
+  return res.status(200).json({ Following: allFollowing, success: true });
+    
+  } catch (error) {
+    return res.status(500).json({ error: error.message, success: false });
+
+  }
+ 
+  
+}

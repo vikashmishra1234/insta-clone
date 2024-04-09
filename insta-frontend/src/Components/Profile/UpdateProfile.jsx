@@ -14,18 +14,18 @@ const Navigate = useNavigate()
         let res=await updateProfile(formObj,localStorage.getItem("profileId"));
         if(res.message){
             alert(res.message);
-            Navigate(`/profile?user=${localStorage.getItem("userId")}`);
+            Navigate(`/profile?user=${localStorage.getItem("profileId")}`);
         }
     }
   return (
-    <div style={{display:'flex'}}>
+    <div className='home-wrapper'>
         <Sidebar/>
         <section className='update-profile'>
         <form action="" onSubmit={handleSubmit}>
-            <h2 style={{width:'100%'}}>update Profile</h2>
-            <input name='userName' type="text" placeholder='username' />
-            <input name='bio' type="text" placeholder='bio' />
-            <input type="submit"  />
+            <h2 style={{width:'100%',textAlign:'center'}}>update Profile</h2>
+            <input required name='userName' type="text" placeholder='username' />
+            <input required name='bio' type="text" placeholder='bio' />
+            <button type="submit" id='button' >Update</button>
         </form>
         </section>
 

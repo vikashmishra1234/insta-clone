@@ -50,6 +50,8 @@ const Post = (props) => {
               style={{ width: "55px", borderRadius: "50%" }}
             />
           ) : (
+            
+
             <img
               src={`https://insta-clone-knbn.onrender.com/profiles/${props.Profile}`}
               onError={handleError}

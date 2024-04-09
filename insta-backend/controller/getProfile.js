@@ -5,12 +5,21 @@ const Profile = require("../models/userProfile");
 
 exports.getProfile=async(req,res)=>{
 try { 
-const profile = await Profile.findOne({userId:req.params.userId});
-console.log(profile)
+   
+    const params = req.params.userId
+    const profileId=params.split("-1")[0]
+    const adminId=params.split("-1")[1]
+    var Follow = false;
+const profile = await Profile.findById(profileId);
+const Follows = await follower.findOne({$and:[{profileId:profileId},{adminId:adminId}]});
+if(Follows){
+    Follow=true;
+}
+
 if(!profile){
     return res.status(200).json({success:false,error:'profile not found'});
 }
-return res.json({success:true,Profile:profile})
+return res.json({success:true,Profile:profile,Follows:Follow})
 } catch (error) {
     return res.status(200).json({success:false,error:error.message});
 
@@ -21,17 +30,14 @@ exports.createProfile=async(req,res)=>{
     try {
         const exit = await Profile.findOne({userId:req.body.userId});
         if(exit){
-            return res.statut(200).json({success:false,error:"user profile areadry exits"})
+      
+            return res.status(200).json({success:true,Profile:exit,message:"user profile areadry exits"});
         }
-        const userExit=await signUp.findOne({Username:req.body.userName});
-        if(!userExit){
-            return res.statut(200).json({success:false,error:"user does not exits"})
-        }
+       
         const newProfile = await Profile(req.body);
         await newProfile.save();
         console.log("saved")
-       
-        return res.json({success:true,newProfile:newProfile,message:'profile created successfully'})
+        return res.json({success:true,Profile:newProfile,message:'profile created successfully'})
     } catch (error) {
         return res.json({success:false,error:error.message})
     }
@@ -68,12 +74,10 @@ exports.removeFollow=async(req,res)=>{
         let newfollower=parseInt(profile.follower);
         newfollower=newfollower-1;
         await userProfile.findByIdAndUpdate(req.body.profileId,{follower:newfollower});
-        let newfollowing =parseInt(adminProfile.following);
-        newfollowing=newfollowing-1;
-        await userProfile.findOneAndUpdate({userId:req.body.userId},{following:newfollowing})
-        let resp=await follower.deleteOne({profileId:req.body.profileId});
-       
-        res.json({success:true,message:"follow successful"});
+        
+        await follower.deleteOne({ $and: [condition1, condition2] });
+     
+       return res.json({success:true,message:"follow successful"});
     } catch (error) {
         console.log(error.message)
         return res.status(500).json({success:false,error:error.message});
@@ -82,7 +86,7 @@ exports.removeFollow=async(req,res)=>{
 }
 exports.addFollower=async(req,res)=>{
     try {
-        console.log(req.body)
+      
         const profile = await userProfile.findById(req.body.profileId);
         const adminProfile = await userProfile.findOne({userId:req.body.userId});
         if(!profile||!adminProfile){
@@ -92,9 +96,7 @@ exports.addFollower=async(req,res)=>{
         let newfollower=parseInt(profile.follower);
         let inc=newfollower+1;
         await userProfile.findByIdAndUpdate(req.body.profileId,{follower:inc});
-        let newfollowing =parseInt(adminProfile.following)
-        let incFoll=newfollowing+1;
-        await userProfile.findOneAndUpdate({userId:req.body.userId},{following:incFoll})
+       
         await follower.create({
             profileId:req.body.profileId,
             adminId:req.body.userId

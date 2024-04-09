@@ -8,8 +8,9 @@ const ContextState = (props) => {
   const [admin,setAdmin] =useState(null);
   const [profile,setProfile] =useState(false);
   const [changes,setChanges] = useState(false)
+  const [following,setFollowing] = useState(null)
   return (
-    <ContextProvider.Provider value={{recentPost,user,profile,admin,changes,setChanges,setAdmin,setProfile,setUser,setRecent}} >
+    <ContextProvider.Provider value={{recentPost,user,profile,admin,changes,following,setFollowing,setChanges,setAdmin,setProfile,setUser,setRecent}} >
         {props.children}
     </ContextProvider.Provider>
   )

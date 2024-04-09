@@ -9,6 +9,7 @@ const UploadPost = ({ setForm }) => {
     const [post, setPost] = useState({ caption: '', location: '' });
     const { setRecent, user, setChanges, changes, recentPost } = useContext(ContextProvider);
     const navigate = useNavigate();
+    const [load,setLoad] = useState(false);
 
     useEffect(() => {
         if (changes) {
@@ -41,7 +42,9 @@ const UploadPost = ({ setForm }) => {
         formData.append('Profile', 'mishra');
 
         try {
+            setLoad(true);
             const res = await ImgeUpload(formData);
+            setLoad(false);
             if (res.message) {
                 alert(res.message);
                 setChanges(!changes);
@@ -52,11 +55,14 @@ const UploadPost = ({ setForm }) => {
             setForm(false);
             navigate('/home');
         } catch (error) {
+            setLoad(false)
             console.error('Error uploading image:', error);
         }
     };
 
     return (
+        <>
+       
         <form action="" className="upload" onSubmit={handleSubmit}>
             <div>
                 <h2 style={{color:'black'}}>Upload Post</h2>
@@ -78,8 +84,9 @@ const UploadPost = ({ setForm }) => {
                 placeholder="location"
                 type="text"
             />
-            <button type="submit">upload</button>
+            <button type="submit">{load?'uploading...':'upload'}</button>
         </form>
+        </>
     );
 };
 

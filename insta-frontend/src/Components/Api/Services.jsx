@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 
-// const url = 'http://localhost:2000';
-const url = 'https://insta-clone-knbn.onrender.com';
+ //const url = 'http://localhost:2000';
+ const url = 'https://insta-clone-knbn.onrender.com';
 var load = false;
 
 
@@ -138,6 +138,7 @@ export const getAllCommet=async(id)=>{
     }
 }
 export const getProfile=async(id)=>{
+   
     try {
         const fetch = await axios.get(`${url}/api/get/profile/${id}`);
        if(fetch.data.success){
@@ -297,6 +298,23 @@ export const followCheck=async(data)=>{
         }
     } catch (error) {
         console.log(error.message);
+        alert(error.message)
+    }
+}
+
+export const getAllFollower = async(userId)=>{
+    try {
+        const res = await axios.get(`${url}/api/get/follower/${userId}`);
+        return res.data
+    } catch (error) {
+        alert(error.message)
+    }
+}
+export const sendEmail = async(data)=>{
+    try {
+        const res = await axios.post(`${url}/api/send/email`,data);
+        return res.data
+    } catch (error) {
         alert(error.message)
     }
 }

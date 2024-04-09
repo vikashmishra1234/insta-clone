@@ -17,10 +17,7 @@ const signUpSchema = mongoose.Schema({
         type:String,
         required:true
     },
-    ConfirmPass:{
-        type:String,
-        required:true
-    },
+    
     Username:{
         type:String,
         required:true

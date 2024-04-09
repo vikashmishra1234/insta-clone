@@ -9,6 +9,9 @@ import UpdateProfile from './Components/Profile/UpdateProfile';
 import Search from './Components/searchUser/Search';
 import EndUserProfile from './Components/Profile/EndUserProfile';
 import { adminGet } from './Components/Api/Services';
+import HomeVideo from './vedioCall/home'
+import Room from './vedioCall/pages'
+import Following from './Components/Profile/Following';
 
 
 const App = () => {
@@ -30,7 +33,11 @@ const App = () => {
 
    <Router>
     <Routes>
+    <Route exact path='/video' element={<HomeVideo/>}/>
+    <Route exact path='/room/:roomId' element={<Room/>}/>
+
       <Route exact path='/' element={<SignUp/>}/>
+      <Route exact path='/following' element={<Following/>}/>
       <Route exact path='/login' element={<Login/>}/>
       <Route exact path='/home' element={<Home />}/>
       <Route exact path='/profile' element={<Profile key={'uoperu989kjlf890'} admin={admin}/>}/>

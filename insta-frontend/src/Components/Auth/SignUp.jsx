@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const Navigate = useNavigate()
+  const [load,setLoad] = useState()
     const handleSubmit = async(e)=>{
         e.preventDefault();
         let form = e.target
@@ -18,8 +19,9 @@ const SignUp = () => {
             formObject[key] = formObj[key].toLowerCase();
           }
         }
-        
+        setLoad(true)
        let data= await HandleForm(signUp,formObject);
+       setLoad(false)
       if(data.success){
           
        localStorage.setItem("token",data.token);
@@ -34,6 +36,7 @@ const SignUp = () => {
     }
   return (
     <div className="container">
+     
       <header>
         {/* <img src={insta} alt="insta image" /> */}
         <p>Sign up to see photos and videos from your friends.</p>
@@ -68,13 +71,7 @@ const SignUp = () => {
             name="Password"
             type="password"
           />
-          <input
-          required
-            autoComplete="off"
-            placeholder="confirm password"
-            name="ConfirmPass"
-            type="password"
-          />
+        
 
           <section>
             <p>
@@ -89,7 +86,7 @@ const SignUp = () => {
             </p>
           </section>
           <div>
-            <button type="submit">Sign UP</button>
+            <button type="submit"> {load?'Processing':'Sign Up'}</button>
           </div>
           <div style={{margin:'5px'}}>
             <Link to='/login'>Already have an account?Login</Link>
