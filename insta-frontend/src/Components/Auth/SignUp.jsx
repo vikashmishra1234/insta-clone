@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import insta from "../../assets/instagram.png";
 import "../../Style/auth.css";
 import { HandleForm } from "./HandleForm";
