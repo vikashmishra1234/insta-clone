@@ -138,11 +138,13 @@
 @media screen and (max-width:600px){
   .btn{
     width: 44%;
-    top: 13%;
+    top: 18%;
+    left: 40%;
   }
   .btn-1{
     width: 44%;
-    top: 13%;
+    top: 18%;
+    left: 40%;
   }
   .upload{
     width: 80%;
@@ -150,6 +152,7 @@
     gap: 8px;
     height: 47%
   }
+  
   .search-main {
     padding: 10px;
     
@@ -161,6 +164,8 @@
   .images-container{
     height: 67vh;
     overflow-y: scroll;
+    margin-top: 48px;
+    padding-top: 26px;
   }
   .home-wrapper{
    
