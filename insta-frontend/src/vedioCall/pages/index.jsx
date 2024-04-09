@@ -4,7 +4,7 @@ import { ZegoUIKitPrebuilt } from '@zegocloud/zego-uikit-prebuilt';
 import { GetUser, sendEmail } from '../../Components/Api/Services';
 import ContextProvider from '../../Components/Context/ContextProvider';
 import { useContext } from 'react';
-import {useNavigate} from 'react-router-dom'
+import {useNavigate,useLocation} from 'react-router-dom'
 
 const index = () => {
     
@@ -13,7 +13,10 @@ const [chat,setChat] = useState(false)
 const [Email,setEmail] = useState(null)
 const [id,setId] = useState(null)
 const {user,setUser,changes} = useContext(ContextProvider);
-const {roomId} = useParams();
+//const {roomId} = useParams();
+const { search } = useLocation();
+  const params = new URLSearchParams(search);
+  const roomId = params.get("param");
 const navigate = useNavigate();
 
 useEffect(()=>{

@@ -16,7 +16,7 @@ const handleCall=(roomId,userName,userEmail)=>{
     if(ok){
         let params = `${roomId+"-5"+userName+"-5"+userEmail}`;
        
-        navigate(`/room/${params}`);
+        navigate(`/room?param=${params}`);
     }
 }
    
