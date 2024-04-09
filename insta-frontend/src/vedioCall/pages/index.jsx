@@ -23,9 +23,7 @@ useEffect(()=>{
    const arr = roomId.split("-5");
  setEmail(arr[2]);
  setId(arr[0])
- conosle.log(arr[0])
- conosle.log(arr[1])
- conosle.log(arr[2])
+
   const getUser = async()=>{
       let user = await GetUser(localStorage.getItem("userId"));
       setUser(user.user);  
