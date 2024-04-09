@@ -23,6 +23,9 @@ useEffect(()=>{
    const arr = roomId.split("-5");
  setEmail(arr[2]);
  setId(arr[0])
+ conosle.log(arr[0])
+ conosle.log(arr[1])
+ conosle.log(arr[2])
   const getUser = async()=>{
       let user = await GetUser(localStorage.getItem("userId"));
       setUser(user.user);  
@@ -37,16 +40,20 @@ useEffect(()=>{
     
     const sendMail = async()=>{
       setName(user.Username)
-      
-      const res = await sendEmail({
-        from:user.Email,
-        to:Email,
-        subject:`${user.Username} want a video call with you`,
-        text:`https://social-app-psi-six.vercel.app/room?param=${id+"-5"+Name+"-5"+Email}`
-      });
-      if(res.success){
-        setChat(true);
+      try {
+
+        const res = await sendEmail({
+          from:user.Email,
+          to:Email,
+          subject:`${user.Username} want a video call with you`,
+          text:`https://social-app-psi-six.vercel.app/room?param=${id+"-5"+Name+"-5"+Email}`
+        });
+        setChat(true)
+      } catch (error) {
+        console.log(error.message)
       }
+ 
+     
 
     }
    Email&&user?id&&sendMail():''
