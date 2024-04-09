@@ -25,7 +25,7 @@ const handleCall=(roomId,userName,userEmail)=>{
         <Sidebar/>
         
         {
-           following?
+           following&&following.length!=0?
             following&&following.map((element)=>(
                 
                 <div key={element._id} className='following' onClick={()=>handleCall(element._id,element.userName,element.userEmail)}>
