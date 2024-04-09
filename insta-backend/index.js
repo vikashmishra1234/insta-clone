@@ -11,7 +11,7 @@ const Port = 2000;
 
 // app.use(cors());
 app.use(cors({
-    origin:["https://insta-clone-4s1k.vercel.app"],
+    origin:["https://social-app-psi-six.vercel.app"],
     methods:["POST","GET","PUT"],
     credentials:true
 }));
