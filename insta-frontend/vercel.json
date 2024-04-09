@@ -1,5 +1,33 @@
+<<<<<<< HEAD
 {
     "rewrites":[
         {"source":"./(.*)","destination":"/"}
     ]
 }
+=======
+
+{
+    "routes":[
+        {
+            "src":"/",
+            "dest":"/"
+        },
+        {
+            "src":"/login",
+            "dest":"/"
+        },
+        {
+            "src":"/home",
+            "dest":"/"
+        },
+        {
+            "src":"/search",
+            "dest":"/"
+        },
+        {
+            "src":"/profile",
+            "dest":"/"
+        }
+    ]
+}
+>>>>>>> de57aa81453da8d6ae56e22293bf5e86b33e387d

@@ -151,7 +151,7 @@ exports.findAllPosts = async (req, res) => {
     if(!posts){
          res.status(200).json({success:true,error:"recent posts available"});
     }
-    const allPosts = [...pos,posts];
+    const allPosts = [...pos,...posts];
     
     
 
