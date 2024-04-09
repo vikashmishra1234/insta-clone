@@ -25,6 +25,7 @@ const handleCall=(roomId,userName,userEmail)=>{
         <Sidebar/>
         
         {
+           following?
             following&&following.map((element)=>(
                 
                 <div key={element._id} className='following' onClick={()=>handleCall(element._id,element.userName,element.userEmail)}>
@@ -34,7 +35,7 @@ const handleCall=(roomId,userName,userEmail)=>{
                    
                     <span>{element.userName}</span>
                 </div>
-            ))
+            )):<h3>Follow someone to make video calls </h3>
         }
         <h2 style={{textAlign:'center'}}>Your following</h2>
     </div>
