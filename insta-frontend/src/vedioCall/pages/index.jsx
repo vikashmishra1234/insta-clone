@@ -39,7 +39,7 @@ useEffect(()=>{
         from:user.Email,
         to:Email,
         subject:`${user.Username} want a video call with you`,
-        text:`https://insta-clone-frontend-sooty.vercel.app//room/${id+"-5"+Name+"-5"+Email}`
+        text:`https://insta-clone-frontend-sooty.vercel.app/room/${id+"-5"+Name+"-5"+Email}`
       });
       if(res.success){
         setChat(true);

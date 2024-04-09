@@ -3,7 +3,7 @@ import React from 'react'
 const EnduserBio = ({image}) => {
     console.log(image)
   return (
-    <div><img src={`src/userProfiles/${image}`} alt="imgl" /></div>
+    <div><img src={`https://insta-clone-knbn.onrender.com/userProfiles/${image}`} alt="imgl" /></div>
   )
 }
 
