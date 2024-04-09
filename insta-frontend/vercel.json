@@ -6,6 +6,10 @@
             "dest":"/"
         },
         {
+            "src":"/room",
+            "dest":"/"
+        },
+        {
             "src":"/login",
             "dest":"/"
         },
