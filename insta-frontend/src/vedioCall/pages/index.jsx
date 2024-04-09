@@ -42,7 +42,7 @@ useEffect(()=>{
         from:user.Email,
         to:Email,
         subject:`${user.Username} want a video call with you`,
-        text:`https://social-app-psi-six.vercel.app/room/${id+"-5"+Name+"-5"+Email}`
+        text:`https://social-app-psi-six.vercel.app/room?param=${id+"-5"+Name+"-5"+Email}`
       });
       if(res.success){
         setChat(true);
