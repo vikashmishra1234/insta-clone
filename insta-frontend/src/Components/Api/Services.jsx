@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 
- const url = 'http://localhost:2000';
- //const url = 'https://insta-clone-knbn.onrender.com';
+ //const url = 'http://localhost:2000';
+ const url = 'https://insta-clone-knbn.onrender.com';
 var load = false;
 
 
