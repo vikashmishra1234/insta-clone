@@ -76,7 +76,7 @@ const SignUp = () => {
           <section>
             <p>
               People who use our service may have uploaded your contact
-              information to Instagram. Learn more
+              information.. Learn more
             </p>
           </section>
           <section>
