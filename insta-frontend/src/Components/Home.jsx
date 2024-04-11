@@ -57,7 +57,7 @@ const Home = () => {
         {allPosts && allPosts.POST.length > 0 ? (
           <Feed Posts={allPosts.POST} />
         ) : (
-          <h2>click on the create button upload images</h2>
+          <h2  style={{color:"pink"}}>welcome you,start sharing post by clicking on the create button</h2>
         )}
         {/* {allPosts?<Feed Posts={allPosts.POST}/>:<h2 style={{color:"pink"}}> welcome you,start sharing post by clicking on the create button</h2>} */}
       </div>
