@@ -59,7 +59,7 @@ const Home = () => {
         ) : (
           <h2>click on the create button upload images</h2>
         )}
-        {/* {allPosts?<Feed Posts={allPosts.POST}/>:<h2>click on the create button upload images</h2>} */}
+        {/* {allPosts?<Feed Posts={allPosts.POST}/>:<h2 stye={{color:"pink"}}> welcome you,start sharing post by clicking on the create button</h2>} */}
       </div>
     </div>
   );
